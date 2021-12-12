@@ -4,11 +4,14 @@
 ```
 npm install
 ```
+npm install -g json-server
 
 ### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
+npx json-server --watch src/data/profiledata.json --port 3000
+
 
 ### Compiles and minifies for production
 ```
