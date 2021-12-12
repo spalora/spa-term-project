@@ -1,130 +1,153 @@
 <template>
- <div class="container">
-  <form class="message-container">
-    <div class="input-container">
-      <label class="input-label"> NAME </label><br/>
-      <input type="text" id="name" class="input-field" required />
-    </div>
-    <div class="input-container">
-      <label class="input-label"> EMAIL </label><br/>
-      <input type="text" id="email" class="input-field" required />
-    </div>
-      <div class="input-container">
-        <label class="input-label"> MESSAGE </label><br/>
-        <textarea rows="6" id="msg"  class="text-area" />
-      </div>
+<!-- Contact page  includes 
+left side :Form where visitor of the page can fill in the name, email ID , message and send button.
+right side: contact details such as address, phone number and email id . -->
+  <main class="main-contact-container">
+    <!-- form validation is performed and display the error  and prevents form submission if validation fails using v-on:submit.prevent directive.
+      -->
+    <form class="message-container" novalidate  v-on:submit.prevent=validateForm>
+      <section class="input-container">
+        <label class="input-label"> {{name}} </label><br />
+        <input type="text" id="name" class="input-field" required  v-model="guestname"/>
+        <div id="ename" class="error"></div>
+      </section>
+      <section class="input-container">
+        <label class="input-label"> {{email}} </label><br />
+        <input type="text" id="email" class="input-field" required  v-model="guestemail"/>
+        <div id="eemail" class="error"></div>
+      </section>
+      <section class="input-container">
+        <label class="input-label"> {{msg}} </label><br />
+        <textarea rows="6" id="msg" class="text-area"  v-model="guestmsg"/>
+        <div id="emsg" class="error"></div>
+      </section>
+      <button>{{send}}</button>
+    </form>
 
-      <button v-on:click="validateForm()">SEND</button>
-   
-  </form>
-<div class="contact-container">
-<div class="contact-item">
-    <img v-bind:src="location" alt="location" />
-    <p>35, Commons DR, Shrewsbury,MA</p>
-    <br />
-    </div>
-    <div class="contact-item">
-    <img v-bind:src="contact" alt="location" />
-    <p>508-395-3089</p>
-    <br />
-    </div>
-    <div class="contact-item">
-    <img v-bind:src="mail" alt="location" />
-    <p>spalora@bu.edu</p>
-    <br />
-    </div>
-  </div>
- </div>
- 
+<!-- section to display the contact me details.-->
+    <section class="contact-container">
+      <div class="contact-item">
+        <img v-bind:src="location" alt="location" />
+        <p>{{address}}</p>
+        <br />
+      </div>
+      <div class="contact-item">
+        <img v-bind:src="contact" alt="location" />
+        <p>{{phnum}}</p>
+        <br />
+      </div>
+      <div class="contact-item">
+        <img v-bind:src="mail" alt="location" />
+        <p>{{emailid}}</p>
+        <br />
+      </div>
+    </section>
+  </main>
 </template>
 
 <script>
 export default {
+  /* data property */
   data() {
     return {
+      name:'NAME',
+      email:'EMAIL',
+      guestemail:'',
+      guestname:'',
+      guestmsg:'',
+      msg:'MESSAGE',
+      send:'SEND',
+      address:'35, Commons DR, Shrewsbury,MA',
+      phnum:'508-395-3089',
+      emailid:'spalora@bu.edu',
       location: require("../assets/location.svg"),
-       mail: require("../assets/mail.svg"),
-       contact: require("../assets/contact.svg"),
-        reg: '/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/'
+      mail: require("../assets/mail.svg"),
+      contact: require("../assets/contact.svg"),
+      emailRegEx: new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
     };
   },
-  methods:{
-    validateForm:function(){
-      var name=document.getElementById('name');
-      var email=document.getElementById('email');
-      var message=document.getElementById('msg');
-      if(!(this.reg.test(this.email))) {
-          alert('invalid')
-     }
+
+  /* method which performs form validation */
+  methods: {
+    validateForm: function () {
+       emsg.innerHTML = '';
+        eemail.innerHTML = '';
+         ename.innerHTML = '';
+      if (this.guestmsg.length<1 ) {
+         emsg.innerHTML = 'Please enter message';
     }
-  }
+    if (!this.emailRegEx.test(this.guestemail)) {
+         eemail.innerHTML = 'Please enter valid email address';
+    }
+    if (this.guestname.length<2) {
+         ename.innerHTML = 'Please enter name';
+    }
+      
+    },
+
+  },
 };
 </script>
 
-<style >
-
-.contact-item{
+<!--Page specific styles goes here.-->
+<style scoped>
+.contact-container .contact-item {
   display: flex;
   margin-top: 1rem;
 }
-.container{
-    display: flex;
-    text-align: left;
+.main-contact-container {
+  display: flex;
+  text-align: left;
 }
-.contact-item img{
-    width:3rem;
-    height:3rem;
-}
-
-.input-container{
-    margin-bottom: 20px;
-    text-align: left;
-    margin-left: 5rem;
+.contact-item img {
+  width: 3rem;
+  height: 3rem;
 }
 
-.message-container{
+.input-container {
+  margin-bottom: 20px;
+  text-align: left;
+  margin-left: 5rem;
+}
+
+.message-container {
   width: 50%;
   margin-left: 1rem;
   margin-top: 3rem;
- 
 }
 
-.contact-container{
+.contact-container {
   margin-left: 10rem;
-  margin-top:2rem;
+  margin-top: 2rem;
 }
 
-input[type=text],textarea { 
-  padding:10px;
-  border-radius:0.5rem;
-  box-shadow: white;
+input[type="text"],
+textarea {
+  padding: 10px;
+  border-radius: 0.5rem;
   width: 60%;
- box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
- border: 2px solid #eee;
-
-
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border: 2px solid #eee;
 }
 
-textarea{
-  resize:vertical;
+textarea {
+  resize: vertical;
 }
 
-.contact-item img,.contact-item p {
-  padding:10px;
-  color:white;
+.contact-item img,
+.contact-item p {
+  padding: 10px;
+  color: white;
 }
-.container button{
- /* usual styles */
-  padding:10px;
-  border:none;
-  background-color:#fdcd3b;
-  color:#1d1c12;
+.main-contact-container button {
+  padding: 10px;
+  border: none;
+  background-color: #fdcd3b;
+  color: #1d1c12;
   border: 1px solid #ddd;
-  font-weight:600;
-  border-radius:5px;
-  width:30%;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 30%;
   margin-left: 5rem;
- 
 }
-
 </style>

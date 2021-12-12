@@ -1,0 +1,63 @@
+{
+	"experience": [
+        {
+            "id":1,
+			"role": "Technical Lead",
+			"duration": "Jan 2017- Present",
+			"work_desc": "Scoped functional & technical work units required to implement proposed solutions and extensively involved in writing technical designs, and did feasibility study for functional requirements."
+		},
+        {
+            "id":2,
+			"role": "Sr. Technical Developer",
+			"duration": "April 2014 -Jan 2017",
+			"work_desc": "Participated in project planning sessions to analyze business requirements and outlined proposed solutions based on SCRUM (Agile methodology)."
+		},
+		{
+            "id":3,
+			"role": "Technical Developer",
+			"duration": "Oct 2012 - April 2014",
+			"work_desc": "Developing and testing of quality product and supporting during production migration."
+		},
+        {
+            "id":4,
+			"role": "Junior Developer",
+			"duration": "Aug 2010 - Oct 2012",
+			"work_desc": "Actively resolved bugs, handled enhancements and Production Support."
+		}
+	],
+    "skills": [
+        {
+            "id":1,
+			"skill_name": "Java",
+			"skill_perct": "90%",
+            "full":"cover full90",
+            "fill":"fill90",
+			"half":"cover half"
+		},
+        {
+            "id":2,
+			"skill_name": "Android",
+			"skill_perct": "75%",
+            "full":"cover full75",
+            "fill":"fill75",
+			"half":"cover half"
+		},
+		{
+            "id":3,
+			"skill_name": "DB",
+			"skill_perct": "65%",
+            "full":"cover full65",
+            "fill":"fill65",
+			"half":"cover half"
+		},
+        {
+            "id":4,
+			"skill_name": "UI",
+			"skill_perct": "50%",
+            "full":"cover full50",
+            "fill":"fill50",
+			"half":"cover half"
+		}
+	]
+    
+}

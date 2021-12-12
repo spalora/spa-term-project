@@ -1,94 +1,79 @@
 <template>
-<div id="skill-content">
- <h2>My Skills</h2>
- <hr/>
- <p>The scope of my work is a large part of backend and native app development. I also have some UI experience.</p>
-<div class="skill-container">
-    <div class="circle-wrap">
+<!--Skills related informations are displayed here,
+  Skills details are retrieved from profiledata.json using fetch. -->
+  <main id="skill-content">
+    <h2>{{ skill_title }}</h2>
+    <hr />
+    <p>{{ skill_desc }}</p>
+    <!--below section is for circular progress bar display of skillset, iterated through the "skills" array and easch circlular progress bar is displayed, code repetation is avoided with this approach.-->
+    <section class="skill-container">
+      <div v-for="skill in skills" :key="skill.id" class="outer-circle">
         <div class="circle">
-          <div class="mask full90">
-            <div class="fill90"></div>
+          <div v-bind:class="skill.full">
+            <div v-bind:class="skill.fill"></div>
           </div>
-          <div class="mask half">
-            <div class="fill90"></div>
+          <div v-bind:class="skill.half">
+            <div v-bind:class="skill.fill"></div>
           </div>
-          <div class="inside-circle"> 90%  </div>
-          
-     
+          <div class="inside-circle">{{ skill.skill_perct }}</div>
         </div>
+        <div class="skill-name">{{ skill.skill_name }}</div>
       </div>
-
-    <div class="circle-wrap">
-        <div class="circle">
-          <div class="mask full75">
-            <div class="fill75"></div>
-          </div>
-          <div class="mask half">
-            <div class="fill75"></div>
-          </div>
-          <div class="inside-circle"> Android </div>
-        </div>
-      </div>
-
-    <div class="circle-wrap">
-        <div class="circle">
-          <div class="mask full65">
-            <div class="fill65"></div>
-          </div>
-          <div class="mask half">
-            <div class="fill65"></div>
-          </div>
-          <div class="inside-circle"> DB </div>
-        </div>
-      </div>
-
-    <div class="circle-wrap">
-        <div class="circle">
-          <div class="mask full50">
-            <div class="fill50"></div>
-          </div>
-          <div class="mask half">
-            <div class="fill50"></div>
-          </div>
-          <div class="inside-circle"> UI</div>
-        </div>
-      </div>
-    </div>
-    </div>
+    </section>
+  </main>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      skill_desc:
+        "The scope of my work is a large part of backend and native app development. I also have some UI experience.",
+      skill_title: "My Skills",
+      /* this empty array will be updated from the JSON data. */
+     skills: [],
+    };
+  },
+  /* Local JSOndata is hosted in Json-server using the command , 
+  npx json-server --watch src/data/profiledata.json --port 3000 */
+  mounted() {
+    fetch("http://localhost:3000/skills")
+      .then((res) => res.json())
+      .then((data) => (this.skills = data))
+      .catch((err) => console.log(err));
+  },
+};
+</script>
+
+<!--Page specific styles goes here.-->
 <style scoped>
 hr {
-       
-        margin-top: 0.7rem;
-        border: none;
-        height: 0.3rem;
-        width: 10%;
-        margin-left: 3rem;
-        background: #fdcd3b;
-       
-    }
-    
-.skill-container{
-    display: flex;
-    margin-top:-5rem;
-    margin-left:-2rem;
-    flex-wrap: wrap;
-    align-content: stretch;
+  margin-top: 0.7rem;
+  border: none;
+  height: 0.3rem;
+  width: 10%;
+  margin-left: 3rem;
+  background: #fdcd3b;
 }
 
- h2{
-    text-align: left;
-    margin-left:3rem;
+.skill-container {
+  display: flex;
+  margin-top: -5rem;
+  margin-left: -2rem;
 }
-#skill-content p{
-    font-size: 1rem;
-     margin-top:2rem;
-    color: white;
-    text-align: left;
-     margin-left:3rem;
+
+h2 {
+  text-align: left;
+  margin-left: 3rem;
 }
-.circle-wrap {
+#skill-content p {
+  font-size: 1rem;
+  margin-top: 2rem;
+  color: white;
+  text-align: left;
+  margin-left: 3rem;
+}
+.outer-circle {
   margin: 150px auto;
   width: 150px;
   height: 150px;
@@ -97,22 +82,22 @@ hr {
   border: 1px solid #cdcbd0;
 }
 
-.circle-wrap .circle .mask,
-.circle-wrap .circle .fill90 ,
-.circle-wrap .circle .fill75,
-.circle-wrap .circle .fill65,
-.circle-wrap .circle .fill50{
+.outer-circle .circle .cover,
+.outer-circle .circle .fill90,
+.outer-circle .circle .fill75,
+.outer-circle .circle .fill65,
+.outer-circle .circle .fill50 {
   width: 150px;
   height: 150px;
   position: absolute;
   border-radius: 50%;
 }
 
-.circle-wrap .circle .mask {
+.outer-circle .circle .cover {
   clip: rect(0px, 150px, 150px, 75px);
 }
 
-.circle-wrap .inside-circle {
+.outer-circle .inside-circle {
   width: 122px;
   height: 122px;
   border-radius: 50%;
@@ -128,47 +113,50 @@ hr {
   font-size: 1em;
 }
 
+.skill-name {
+  width: 122px;
+  height: 122px;
+  line-height: 120px;
+  margin-top: 8rem;
+  margin-left: 1rem;
+  color: white;
+  font-weight: 700;
+  font-size: 1em;
+}
 
-
-/* color animation */
-
-/* 3rd progress bar */
-.mask .fill90 ,
-.mask .fill75,
-.mask .fill65,
-.mask .fill50
- {
+.cover .fill90,
+.cover .fill75,
+.cover .fill65,
+.cover .fill50 {
   clip: rect(0px, 75px, 150px, 0px);
   background-color: #fdcd3b;
 }
 
-
-.mask.full90,
+.cover.full90,
 .circle .fill90 {
   animation: fill90 ease-in-out 3s;
   transform: rotate(170deg);
 }
 
-.mask.full65,
+.cover.full65,
 .circle .fill65 {
   animation: fill65 ease-in-out 3s;
   transform: rotate(110deg);
 }
 
-.mask.full75,
+.cover.full75,
 .circle .fill75 {
   animation: fill75 ease-in-out 3s;
   transform: rotate(135deg);
 }
 
-.mask.full50,
+.cover.full50,
 .circle .fill50 {
   animation: fill50 ease-in-out 3s;
   transform: rotate(90deg);
 }
 
-
-@keyframes fill90{
+@keyframes fill90 {
   0% {
     transform: rotate(0deg);
   }
@@ -179,7 +167,7 @@ hr {
 
 /* 170:90%,135:75%,110:65%,90:50% */
 
-@keyframes fill75{
+@keyframes fill75 {
   0% {
     transform: rotate(0deg);
   }
@@ -188,8 +176,7 @@ hr {
   }
 }
 
-
-@keyframes fill65{
+@keyframes fill65 {
   0% {
     transform: rotate(0deg);
   }
@@ -198,8 +185,7 @@ hr {
   }
 }
 
-
-@keyframes fill50{
+@keyframes fill50 {
   0% {
     transform: rotate(0deg);
   }
@@ -207,6 +193,4 @@ hr {
     transform: rotate(90deg);
   }
 }
-
-
 </style>

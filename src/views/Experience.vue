@@ -1,16 +1,19 @@
 <template>
-    <div id="experience-container">
-       <div class="left"> 
-        <img v-bind:src="experience" alt="experience" />
-        <p>Experience</p>
-        </div>
-        <div class="right">
+<!--Below set of lines are to display the experience content, which includes left side image, right side Experience details like Role, duration, role description.-->
+    <main id="experience-container">
+       <section class="left"> 
+        <img v-bind:src="exp_pic" alt="experience" />
+        <p>{{exp_title}}</p>
+        </section>
+       <section class="right">
+           <!-- Looping over array to display the experience data.-->
+        <div class="exp" v-for="exp in experience" :key="exp.id">
              <section class="experience-row">
-                                        <p> Technical Lead</p>
-                                        <p class="small">Jan 2017- Present</p>
-                                        <p class="normal"> Scoped functional & technical work units required to implement proposed solutions and extensively involved in writing technical designs, and did feasibility study for functional requirements.</p><br/>
+                                        <p> {{exp.role}}</p>
+                                        <p class="small">{{exp.duration}}</p>
+                                        <p class="normal"> {{exp.work_desc}}</p><br/>
                                     </section>
-                                    <section class="experience-row">
+                                  <!--  <section class="experience-row">
                                         <p> Sr. Technical Developer</p>
                                          <p class="small">April 2014 -Jan 2017 </p>
                                         <p class="normal">Participated in project planning sessions to analyze business requirements and outlined proposed solutions based on SCRUM (Agile methodology).</p><br/>
@@ -27,21 +30,35 @@
                                         <p> Junior Developer </p>
                                         <p class="small">Aug 2010 - Oct 2012</p>
                                         <p class="normal">Actively resolved bugs, handled enhancements and Production Support.</p>
-                                    </section>
+                                    </section>-->
             </div>
-        </div>
+            </section>
+        </main>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      experience: require("../assets/work.svg")
+    /* data property to display in experience page */
+      exp_pic: require("../assets/work.svg"),
+      /* this empty array will be updated from the JSON data. */
+      experience:[],
+      exp_title:'Experience'
     };
   },
+   /* Local JSOndata is hosted in Json-server using the command , 
+  npx json-server --watch src/data/profiledata.json --port 3000 */
+  mounted(){
+   fetch('http://localhost:3000/experience')
+        .then(res => res.json())
+        .then(data => this.experience=data)
+        .catch(err => console.log(err))
+  }
 };
 </script>
 
+<!--Page specific styles goes here.-->
 <style scoped>
 
 .experience-row .small{
