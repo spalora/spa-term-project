@@ -1,8 +1,16 @@
 # spa-term-project
+
 Git page :
 https://spalora.github.io/spa-term-project/
 
-
+  Full fledge Vue router website application . Consists of total 5 pages : Home, About,Contact,Skills,Experience. Future work includes introducing some additional pages to expose as Portfolio website.
+  
+## Technologies Used:
+  + Vue(router)
+  + JS
+  + CSS
+  + HTML
+   
 ## Project setup
 ```
 npm install
