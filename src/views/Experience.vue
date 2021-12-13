@@ -7,12 +7,12 @@
         </section>
        <section class="right">
            <!-- Looping over array to display the experience data.-->
-        <div class="exp" v-for="exp in experience" :key="exp.id">
-             <section class="experience-row">
+        <section class="exp" v-for="exp in experience" :key="exp.id">
+             <article class="experience-row">
                                         <p> {{exp.role}}</p>
                                         <p class="small">{{exp.duration}}</p>
                                         <p class="normal"> {{exp.work_desc}}</p><br/>
-                                    </section>
+                                    </article>
                                   <!--  <section class="experience-row">
                                         <p> Sr. Technical Developer</p>
                                          <p class="small">April 2014 -Jan 2017 </p>
@@ -31,7 +31,7 @@
                                         <p class="small">Aug 2010 - Oct 2012</p>
                                         <p class="normal">Actively resolved bugs, handled enhancements and Production Support.</p>
                                     </section>-->
-            </div>
+            </section>
             </section>
         </main>
 </template>

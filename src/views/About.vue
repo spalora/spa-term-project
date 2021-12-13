@@ -11,9 +11,9 @@
     <p>
       {{ about_me_line2 }}
     </p>
-    <div id="button">
+    <aside id="button">
       <button v-on:click="download">{{ downloadbtn }}</button>
-    </div>
+    </aside>
   </main>
 </template>
 

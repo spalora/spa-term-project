@@ -20,7 +20,7 @@ right side: contact details such as address, phone number and email id . -->
           required
           v-model="guestname"
         />
-        <div id="ename" class="error"></div>
+        <section id="ename" class="error"></section>
       </section>
       <section class="input-container">
         <label class="input-label"> {{ email }} </label><br />
@@ -31,33 +31,33 @@ right side: contact details such as address, phone number and email id . -->
           required
           v-model="guestemail"
         />
-        <div id="eemail" class="error"></div>
+        <section id="eemail" class="error"></section>
       </section>
       <section class="input-container">
         <label class="input-label"> {{ msg }} </label><br />
         <textarea rows="6" id="msg" class="text-area" v-model="guestmsg" />
-        <div id="emsg" class="error"></div>
+        <section id="emsg" class="error"></section>
       </section>
       <button>{{ send }}</button>
     </form>
 
     <!-- section to display the contact me details.-->
     <section class="contact-container">
-      <div class="contact-item">
+      <article class="contact-item">
         <img v-bind:src="location" alt="location" />
         <p>{{ address }}</p>
         <br />
-      </div>
-      <div class="contact-item">
+      </article>
+      <article class="contact-item">
         <img v-bind:src="contact" alt="location" />
         <p>{{ phnum }}</p>
         <br />
-      </div>
-      <div class="contact-item">
+      </article>
+      <article class="contact-item">
         <img v-bind:src="mail" alt="location" />
         <p>{{ emailid }}</p>
         <br />
-      </div>
+      </article>
     </section>
   </main>
 </template>
