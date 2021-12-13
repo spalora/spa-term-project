@@ -37,11 +37,13 @@ export default {
   /* Local JSOndata is hosted in Json-server using the command , 
   npx json-server --watch src/data/profiledata.json --port 3000 */
   mounted() {
-    fetch("http://localhost:3000/skills")
+    fetch("https://spalora.github.io/profiledata/data/skills.json")
       .then((res) => res.json())
-      .then((data) => (this.skills = data))
+      .then((data) => (this.skills = data.skills))
       .catch((err) => console.log(err));
   },
+
+ 
 };
 </script>
 
