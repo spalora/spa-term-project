@@ -34,8 +34,7 @@ export default {
      skills: [],
     };
   },
-  /* Local JSOndata is hosted in Json-server using the command , 
-  npx json-server --watch src/data/profiledata.json --port 3000 */
+  /*  JSOndata is hosted in git hub pages   */
   mounted() {
     fetch("https://spalora.github.io/profiledata/data/skills.json")
       .then((res) => res.json())

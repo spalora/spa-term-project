@@ -47,8 +47,7 @@ export default {
       exp_title:'Experience'
     };
   },
-   /* Local JSOndata is hosted in Json-server using the command , 
-  npx json-server --watch src/data/profiledata.json --port 3000 */
+   /* JSOndata is hosted in github pages */
   mounted(){
    fetch('https://spalora.github.io/profiledata/data/experience.json')
         .then(res => res.json())
