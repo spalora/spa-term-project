@@ -1,4 +1,7 @@
 # spa-term-project
+Git page :
+https://spalora.github.io/spa-term-project/
+
 
 ## Project setup
 ```
@@ -17,6 +20,7 @@ npx json-server --watch src/data/profiledata.json --port 3000
 ```
 npm run build
 ```
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
