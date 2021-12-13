@@ -35,7 +35,8 @@ export default {
   /* method which invoked when click on "download" button  */
   methods: {
     download() {
-      const url = "/files/SeemaPalora_CV.docx";
+      const url = process.env.BASE_URL+"/files/SeemaPalora_CV.docx";
+      console.log(url);
       window.location.href = url;
     },
   },
