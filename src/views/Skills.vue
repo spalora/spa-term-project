@@ -61,6 +61,7 @@ hr {
   display: flex;
   margin-top: -5rem;
   margin-left: -2rem;
+  flex-direction:column;
 }
 
 h2 {
@@ -193,5 +194,15 @@ h2 {
   100% {
     transform: rotate(90deg);
   }
+}
+
+
+
+/*BreakPoint prefix :md for medium device resolution*/
+@media (min-width: 768px) {
+ .skill-container{
+   flex-direction:row;
+ }
+
 }
 </style>

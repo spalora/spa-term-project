@@ -46,11 +46,9 @@ export default {
 }
 
  .home-content .intro-section {
-  margin-right: 45rem;
   height: 300px;
   margin-top: 10rem;
-  margin-left: 5rem;
-  text-align: left;
+  text-align: center;
 }
 
 button {
@@ -86,6 +84,7 @@ button {
   height: 525px;
   width: 525px;
   margin-top: -2.8rem;
+   display: none;
 }
 
 .home-content .intro-section .name{
@@ -95,5 +94,20 @@ button {
 
 .logo{
   text-align: start;
+}
+
+/*BreakPoint prefix :md for medium device resolution*/
+@media (min-width: 768px) {
+.home-content .bio-pic-section img{
+  display: inline;
+}
+
+ .home-content .intro-section {
+  margin-right: 45rem;
+  margin-top: 10rem;
+  margin-left: 5rem;
+  text-align: left;
+}
+
 }
 </style>

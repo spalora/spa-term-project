@@ -136,20 +136,20 @@ export default {
 .contact-container .contact-item {
   display: flex;
   margin-top: 1rem;
+   flex: 1 0 auto;
 }
 .main-contact-container {
   display: flex;
   text-align: left;
 }
 .contact-item img {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .input-container {
   margin-bottom: 20px;
   text-align: left;
-  margin-left: 5rem;
 }
 
 .message-container {
@@ -157,9 +157,10 @@ export default {
   margin-left: 1rem;
   margin-top: 3rem;
 }
-
+.input-label{
+  font-size: 0.8rem;
+}
 .contact-container {
-  margin-left: 10rem;
   margin-top: 2rem;
 }
 
@@ -170,6 +171,7 @@ textarea {
   width: 60%;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   border: 2px solid #eee;
+  
 }
 
 textarea {
@@ -189,7 +191,37 @@ textarea {
   border: 1px solid #ddd;
   font-weight: 600;
   border-radius: 5px;
-  width: 30%;
+  width: 80%;
+  font-size: 0.8rem;
+  
+}
+
+/*BreakPoint prefix :md for medium device resolution*/
+@media (min-width: 768px) {
+.contact-container {
+  margin-left: 10rem;
+  margin-top: 2rem;
+}
+
+.contact-item img {
+  width: 3rem;
+  height: 3rem;
+}
+
+
+.input-container  {
   margin-left: 5rem;
+}
+
+.main-contact-container button {
+  margin-left: 5rem;
+ font-size: 0.8rem;
+ width: 30%;
+}
+
+.input-label{
+  font-size: 1rem;
+}
+
 }
 </style>

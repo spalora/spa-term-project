@@ -35,8 +35,7 @@ export default {
   /* method which invoked when click on "download" button  */
   methods: {
     download() {
-      const url = process.env.BASE_URL+"/files/SeemaPalora_CV.docx";
-      console.log(url);
+      const url = (process.env.NODE_ENV === 'production')?process.env.BASE_URL+"/files/SeemaPalora_CV.docx":"/files/SeemaPalora_CV.docx";
       window.location.href = url;
     },
   },
@@ -50,7 +49,6 @@ hr {
   border: none;
   height: 0.3rem;
   width: 10%;
-  margin-left: 20rem;
   background: #fdcd3b;
   margin-bottom: 0.7rem;
 }
@@ -58,12 +56,10 @@ hr {
 h2 {
   font-weight: bold;
   margin-bottom: 15px;
-  text-align: left;
-  margin-left: 20rem;
 }
 
 p {
-  margin-left: 20rem;
+  margin-left: 0;
 }
 
 button {
@@ -80,8 +76,7 @@ button {
 }
 
 #button {
-  text-align: left;
-  margin-left: 20rem;
+  text-align: center;
 }
 
 #about-container img {
@@ -91,5 +86,33 @@ button {
   float: left;
   margin-left: 3rem;
   width: 20%;
+  display: none;
 }
+
+/*BreakPoint prefix :md for medium device resolution*/
+@media (min-width: 768px) {
+#about-container img{
+   display: inline;
+ }
+
+ p {
+  margin-left: 20rem;
+}
+
+h2 {
+  text-align: left;
+  margin-left: 20rem;
+}
+
+hr {
+   margin-left: 20rem;
+}
+
+#button {
+  text-align: left;
+  margin-left: 20rem;
+}
+
+}
+
 </style>

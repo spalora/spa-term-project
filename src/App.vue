@@ -90,6 +90,7 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  flex: 1 0 auto;
 }
 
 #nav {
@@ -127,8 +128,15 @@ li {
 
 p {
   color: white;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-align: left;
   padding: 0;
+}
+
+/*BreakPoint prefix :md for medium device resolution*/
+@media (min-width: 768px) {
+p {
+  font-size: 1rem;
+}
 }
 </style>
