@@ -6,14 +6,11 @@ https://spalora.github.io/spa-term-project/
 ## Project setup
 ```
 npm install
-
-npm install -g json-server
 ```
 ### Compiles and hot-reloads for development
 ```
 npm run serve
-
-npx json-server --watch src/data/profiledata.json --port 3000
+export NODE_OPTIONS=--openssl-legacy-provider and reexecute the npm run serve if any node js error comes.
 
 ```
 ### Compiles and minifies for production
