@@ -14,15 +14,21 @@
     </nav>
   </header>
   <router-view />
+
+  <footer >
+    <span>{{footertext}}</span>
+  </footer>
 </template>
 
 <script>
 export default {
   name: "App",
+
   data() {
     return {
       /* Logo name data  */
       logoname: "SP.",
+      footertext:'Copyright © spalora@bu.edu 2021',
       /* navigation tab names and route url */
       navs: [
         {
@@ -133,10 +139,15 @@ p {
   padding: 0;
 }
 
+footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
 /*BreakPoint prefix :md for medium device resolution*/
 @media (min-width: 768px) {
-p {
-  font-size: 1rem;
-}
+  p {
+    font-size: 1rem;
+  }
 }
 </style>
