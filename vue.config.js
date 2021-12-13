@@ -1,0 +1,1 @@
+export const publicPath = '/spa-term-project/';

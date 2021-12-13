@@ -4,8 +4,8 @@ left side :Form where visitor of the page can fill in the name, email ID , messa
 right side: contact details such as address, phone number and email id . -->
   <main class="main-contact-container">
     <!-- form validation is performed and display the error  and prevents form submission if validation fails using v-on:submit.prevent directive.
-      -->
-    <form class="message-container" novalidate  v-on:submit.prevent=validateForm>
+      NOTE: action url is not a relavant one, just added here to show the proper form usage. However I will continue to work on this page and Expecting to Host a site and have a ful fledge flow.-->
+    <form class="message-container"  action="https://bucs601.com/submit.php" method="post" novalidate  v-on:submit.prevent=validateForm>
       <section class="input-container">
         <label class="input-label"> {{name}} </label><br />
         <input type="text" id="name" class="input-field" required  v-model="guestname"/>
