@@ -1,1 +1,3 @@
-export const publicPath = '/spa-term-project/';
+module.exports = {
+    publicPath: '/spa-term-project/'
+  }
